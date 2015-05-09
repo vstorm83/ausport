@@ -1,0 +1,39 @@
+<!--<?xml version="1.0"?>
+<layout version="0.2.0">
+	<slider_slider_view>
+        <reference name="root">
+				<action method="setTemplate"><template>slider/slider.phtml</template></action>
+        </reference>
+		<reference name="root">
+			<block type="slider/mainslider" name="main" template="slider/slider3.phtml">
+				<block type="slider/slider" name="content" as="content" template="slider/slider1.phtml">
+					<block type="slider/tool" name="toolbar" as="toolbar" template="slider/slider2.phtml">
+						<block type="slider/pager" name="slider_pager" as="slider_pager" template="slider/slider4.phtml" />                       
+					</block>
+				</block>
+			</block>
+		</reference>
+	</slider_slider_view>
+	<catalog_category_layered translate="label">
+        <label>Catalog Category (Anchor)</label>
+        <reference name="left">
+            <block type="catalog/layer_view" name="slider.slider" after="catalog.leftnav" template="slider/view.phtml"/>
+        </reference>
+		<reference name="head">
+					<action method="addJs"><script>varien/jquery-1.6.2.min.js</script></action>
+					<action method="addJs"><script>varien/jquery-ui-1.8rc1.custom.min.js</script></action>
+					<action method="addItem"><type>js_css</type><name>slider/jquery-ui-1.8rc1.custom.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action><!--
+		</reference>
+	</catalog_category_layered>
+	<catalog_category_default translate="label">
+        <label>Catalog Category (Non-Anchor)</label>
+        <reference name="left">
+            <block type="catalog/layer_view" name="slider.slider" after="catalog.leftnav" template="slider/view.phtml"/>
+        </reference>
+		<reference name="head">
+					<action method="addJs"><script>varien/jquery-1.6.2.min.js</script></action>
+					<action method="addJs"><script>varien/jquery-ui-1.8rc1.custom.min.js</script></action>
+					<action method="addItem"><type>js_css</type><name>slider/jquery-ui-1.8rc1.custom.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action><!--
+		</reference>
+	</catalog_category_default>
+</layout>-->

@@ -1,0 +1,209 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+		
+		
+
+        <div class="product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+
+        <div class="product-shop">
+            <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div>
+			
+            <?php echo $this->getChildHtml('alert_urls') ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('extrahint') ?>
+			
+			<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php echo $this->getChildHtml('addtocart') ?>
+             <a href="<?php echo $this->getUrl('quickrfq')?>">Quote this product</a> 
+			<?php endif;?>
+
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                        <a href="<?php echo $this->getUrl('quickrfq')?>">Quote this product</a> 
+                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                            
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php elseif (!$_product->isSaleable()): ?>
+                <div class="add-to-box">
+					<?php echo $this->getChildHtml('addtocart') ?>
+                  <a href="<?php echo $this->getUrl('quickrfq')?>">Quote this product</a> 
+                </div>
+            <?php endif; ?>
+            <?php //echo $this->getChildHtml('other');?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
+        </div>
+
+        <div class="clearer"></div>
+        
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+	<div class="product-collateral">
+		<div class="left" style="width:50%;overflow:hidden;"><?php echo $this->getChildHtml('upsell_products') ?></div>
+		<div class="right" style="width:45%">
+<ul id="tabs">
+    <li><a href="#tab1" title="tab1">Detail</a></li>
+    <li><a href="#tab2" title="tab2">Review</a></li>
+
+    <li><a href="#tab3" title="tab3">Shipping</a></li>
+    <li><a href="#tab4" title="tab4">Your Guarantee</a></li>    
+</ul>		
+<div id="tabcontent"> 
+    <div id="tab1" class="tab">
+<?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
+        <div class="box-collateral <?php echo "box-{$alias}"?>">
+            <?php if ($title = $this->getChildData($alias, 'title')):?>
+            <h2><?php echo $this->escapeHtml($title); ?></h2>
+            <?php endif;?>
+            <?php echo $html; ?>
+        </div>
+<?php endforeach;?>
+	</div>
+	<div id="tab2" class="tab">
+		<?php //echo $this->getChildHtml('reviewlist'); ?>
+		<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+	</div>
+	<div id="tab3" class="tab">
+		<?php
+		$quote = Mage::getModel('sales/quote');
+		$quote->getShippingAddress()->setCountryId('AU'); // Set your default shipping country here
+		$_product->getStockItem()->setUseConfigManageStock(false);
+		$_product->getStockItem()->setManageStock(false);
+		$quote->addProduct($_product);
+		$quote->getShippingAddress()->setCollectShippingRates(true);
+		$quote->getShippingAddress()->collectTotals();
+		$rates = $quote->getShippingAddress()->getShippingRatesCollection();
+		// Find cheapest rate
+		$cheapestrate = null;
+		foreach ($rates as $rate) {
+			if (is_null($cheapestrate) || $rate->getPrice() < $cheapestrate) {
+				$cheapestrate = $rate->getPrice();
+			}
+		}
+		$corehelper = Mage::helper('core');
+		if ($cheapestrate) {
+			echo '<p>Estimated Shipping from: ' . $corehelper->currency($cheapestrate) .' (Flat Rate)</p>';
+			echo '<p>Complete Estimated Shipping Can Be Accessed After Adding Product To Cart</p>';
+		}
+		echo '<div class="clear" style="margin-bottom:20px;"></div>';
+		//echo $this->getChildHtml('shipping');
+		?>
+	</div>
+	<div id="tab4" class="tab">
+		<p>At Ausport we are committed to bringing you the best possible quality products, and the best customer satisfaction to match. If you are unhappy with an item you have purchased, simply ring us at the shop on (03) 9764 1511 todiscuss the best possible option of returning the goods.</p>
+
+		<p>For full Australian Returns information, <a href="<?php echo $this->getUrl('australian-returns') ?>">click here.</a></p>
+
+		<p>For full International Returns information, <a href="<?php echo $this->getUrl('international-returns') ?>">click here.</a></p>
+	</div>
+</div>
+		
+		</div>
+        <div class="clear"></div>
+		<?php echo $this->getChildHtml('product_additional_data') ?>
+    </div>
+    </div>
+
+    
+</div>

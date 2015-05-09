@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+    <name>Dextrous_Quickview</name>
+    <version>1.1.0</version>
+    <stability>stable</stability>
+    <license>Open Software License (OSL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Quick View allows you to quickly view and add a product to cart in a fancy popup box.</summary>
+    <description>Quick View allows you to preview the product details and add a product to cart (without opening the product view page) directly from the Category page. A fancy popup box containing crucial product info allows the visitor to make their decision and get back to shopping with no delays. &#xD;
+&#xD;
+Features:&#xD;
+   -  Enable/Disable from admin&#xD;
+   -  Support all types of product.&#xD;
+   -  Hover button on product.&#xD;
+   -  Instant Product Details preview from a Category page&#xD;
+   -  AJAX-based pop-up &#xD;
+&#xD;
+Admin Configuration: &#xD;
+   -  Login to admin&#xD;
+   -  Navigate to 'System-&gt;Configuration' and select 'Dextrous Quickshop' from left bar&#xD;
+   -  Now You can enable or disable quickview&#xD;
+   -  You can also remove jquery if you have already included it.</description>
+    <notes>stable release</notes>
+    <authors><author><name>Hemant kumar sharma</name><user>hemantkr</user><email>hemant7677@gmail.com</email></author></authors>
+    <date>2014-10-28</date>
+    <time>06:42:21</time>
+    <contents><target name="magecommunity"><dir name="Dextrous"><dir name="Quickview"><dir name="Helper"><file name="Data.php" hash="e78d1f309d35e90303675ef7b818785f"/></dir><dir name="controllers"><file name="IndexController.php" hash="700f9d2b2b535dd4df2a8c2ce322be19"/></dir><dir name="etc"><file name="config.xml" hash="7b3b3200c9d7b75c442f1589a73c3dd6"/><file name="system.xml" hash="cf48a6c8558e3be970594833d6191b8a"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="quickview.xml" hash="a45807a4017cbcb91b89c9f4c9069ea3"/></dir><dir name="template"><dir name="quickview"><file name="instruction.txt" hash="f9158289d5c5eb32c37769de2bd966bd"/><dir name="product"><file name="list.phtml" hash="5dbdc405a79f5dd050b65edc73f019e1"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="quickview"><file name="blank.gif" hash="325472601571f31e1bf00674c368d335"/><file name="fancy_close.png" hash="6e2879a324a76e9972ebc98201aae1d8"/><file name="fancy_loading.png" hash="b1d54c240cf06e7f41e372d56919b738"/><file name="fancy_nav_left.png" hash="3f3e406102152cd8236383568a40ba35"/><file name="fancy_nav_right.png" hash="216e4bde5bddeeaa60dc3d692890a68e"/><file name="fancy_shadow_e.png" hash="fd4f491080d29fade5080877f1ba4c8b"/><file name="fancy_shadow_n.png" hash="18cde16379b2ceadef714d9b346d09ec"/><file name="fancy_shadow_ne.png" hash="63adf788acf193d4e4f3642d7d793125"/><file name="fancy_shadow_nw.png" hash="c820c878aedb7a7f9ebd7135a58e7c65"/><file name="fancy_shadow_s.png" hash="9b9e5c888028aaef40fe5b6a363f1e29"/><file name="fancy_shadow_se.png" hash="a8afd5a008884380ee712d177105268f"/><file name="fancy_shadow_sw.png" hash="f81cc0fee5581d76ad3cebe47e7e791b"/><file name="fancy_shadow_w.png" hash="59b0e63eb059e58d932cfd53da4d87e6"/><file name="fancy_title_left.png" hash="1582ac2d3bef6a6445bf02ceca2741cd"/><file name="fancy_title_main.png" hash="38dad6c1ed4bdc81c0bec721b2deb8c2"/><file name="fancy_title_over.png" hash="b886fd165d4b7ac77d41fb52d87ffc60"/><file name="fancy_title_right.png" hash="6cbe0c935511e7f9a2555ccb6a7324c4"/><file name="fancybox-x.png" hash="168696d8a694214090ef90e029cdf393"/><file name="fancybox-y.png" hash="36a58859beb9a6b19322a37466b9f78e"/><file name="fancybox.png" hash="11e57e492ee0311540967cc7a1e6e3e2"/><file name="jquery-1.4.3.min.js" hash="e4958bd2e32d9fcd6115a585ed17a9cc"/><file name="jquery.easing-1.3.pack.js" hash="def257dbb0ab805c4996fd8abb1a6b49"/><file name="jquery.fancybox-1.3.4.css" hash="3ac839445f1a34f64b7c78423a3f5d65"/><file name="jquery.fancybox-1.3.4.js" hash="e7fc2f8a70f0a9f966207c3f71130721"/><file name="jquery.fancybox-1.3.4.pack.js" hash="8bc36a08c46719377528d962966ce37c"/><file name="jquery.mousewheel-3.0.4.pack.js" hash="3b0a821567b463e70bcc1e90ed2bc9b6"/><file name="quickview.css" hash="1df4a1d9dbdd4109deff361cc939d286"/><file name="quickview.js" hash="1193a8523dfdf59f5b6632e1ece1131c"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Dextrous_Quickview.xml" hash="3a4d3c179c343b0eeec6ccec521d3fe4"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

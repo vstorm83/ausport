@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dextrous_Quickview>
+            <version>1.0.0</version>
+        </Dextrous_Quickview>
+    </modules>
+    <frontend>
+        <routers>
+            <quickview>
+                <use>standard</use>
+                <args>
+                    <module>Dextrous_Quickview</module>
+                    <frontName>quickview</frontName>
+                </args>
+            </quickview>
+        </routers>
+        <layout>
+            <updates>
+                <quickview>
+                    <file>quickview.xml</file>
+                </quickview>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Dextrous_Quickview>
+							<title>Quickview Module</title>
+							<sort_order>200</sort_order>
+						</Dextrous_Quickview>
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                       <quickview translate="title" module="quickview">
+                                            <title>Dextrous Quickview</title>
+                                        </quickview>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+    </adminhtml> 
+    <global>
+        <helpers>
+            <quickview>
+                <class>Dextrous_Quickview_Helper</class>
+            </quickview>
+        </helpers>
+    </global>
+	<default>
+        <quickview>
+			<setting>
+                <enable>1</enable>
+				<loadjquery>1</loadjquery>
+            </setting>
+        </quickview>
+    </default>
+</config>
