@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Treasurebox_Ajaxcartsuper>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Treasurebox_Ajaxcartsuper>
+    </modules>
+</config> 
