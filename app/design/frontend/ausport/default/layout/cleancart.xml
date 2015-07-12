@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<layoutUpdate>
-<checkout_cart_index translate="label">
-	<reference name="checkout.cart">
-            <action method="setTemplate"><template>cleancart/cart.phtml</template></action>
-        </reference>
-</checkout_cart_index>
-</layoutUpdate>
