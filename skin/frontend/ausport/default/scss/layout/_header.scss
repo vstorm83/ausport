@@ -28,11 +28,13 @@
  * ============================================ */
  .page-header {
        min-height: 116px;
+	 background-color: #f9f9f9;
 }
 @include bp(min-width, $bp-medium + 1) {
 
     .page-header {
        background:  url(../images/top-bar.png) repeat-x left top;
+	 margin-bottom: 30px;
     }
 
     /*.page-header-container {
@@ -148,9 +150,10 @@
 // container 
 @include bp(min-width, $bp-medium + 1) {
         .container {
-                    margin: 0 auto;
-                    max-width: 980px;
-                    padding: 0 30px;
+			margin: 0 auto;
+			max-width: 980px;
+			padding: 0 30px;
+			&.main {padding: 5px;}
          }
 		 .logo {
 			left: -20px;
