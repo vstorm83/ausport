@@ -5,7 +5,7 @@
 			<remove name="breadcrumbs"/>
 		</reference>
 		<reference name="top.menu">
-			<block type="cms/block" name="top_menu" before="-">
+			<!--block type="cms/block" name="top_menu" before="-">
 				<action method="setBlockId">
 					<block_id>top_menu</block_id>
 				</action>
@@ -14,7 +14,7 @@
 				<action method="setBlockId">
 					<block_id>call_us</block_id>
 				</action>
-			</block>
+			</block!-->
 			<block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" after="call_us">
              <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
                  <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>

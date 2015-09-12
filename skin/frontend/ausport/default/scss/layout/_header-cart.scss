@@ -51,11 +51,27 @@
     .skip-cart {
         width: auto;
         padding: 0 10px;
+        .icon {            
+             @include icon-();
+             background: url(../images/cart-icon.png) no-repeat left center;
+             &:hover {
+                background: url(../images/cart-icon.png) no-repeat left center;
+             }
+        }
+        &:not(.skip-active):hover {
+        .icon {
+           background: url(../images/cart-icon.png) no-repeat left center;
+        }
+    }
     }
 
     .skip-cart:hover {
     }
-
+.header-minicart {
+    max-width: 206px;
+    overflow: hidden;
+    white-space: nowrap;
+}
     #header-cart.skip-active {
         @include menu;
         display: block;
@@ -108,8 +124,7 @@
 
 @include bp(min-width, $bp-medium + 1) {
     .skip-cart {
-        color: $c-action;
-        text-transform: uppercase;
+        color: #252525;    
 
         &:hover {
             text-decoration: none;
@@ -133,7 +148,7 @@
     }
     .skip-cart .count,
     .skip-link.skip-active .count {
-        color: $c-action;
+        color: #1e4e31;    font-weight: bold;
     }
 }
 

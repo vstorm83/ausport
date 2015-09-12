@@ -55,20 +55,21 @@
  * Search - Skip Content
  * ============================================ */
 
-#header-search {
-    padding: 20px;
+.top-container {
+    padding: 20px 0;
 }
 
 // ---------------------------------------------
 
 @include bp(min-width, $bp-medium + 1) {
+.top-container {
+    padding: 0px;
+}
 
     #header-search {
         display: block; // Force visibility
-        position: absolute;
-        top: 55px;
-        right: 0;
-        width: 25%;
+        float:right;        
+        width: 225px;
         height: 50px;
         padding: 0;
     }
@@ -82,6 +83,8 @@
 #search_mini_form .input-box {
     position: relative;
     padding-top: 0;
+      float: left;
+      width: 170px;margin-top: 6px;
 }
 
 #search_mini_form label {
@@ -90,9 +93,13 @@
 
 #search {
     width: 100%;
-    height: 40px;
-    padding-right: 40px;
+    height: 30px;
+    padding-right: 20px;
+    border-radius: 3px; font-size: 13px;
     font-family: $f-stack-special;
+    @include gradient-vertical(#fff,#eaeaea);
+    border:1px solid #afafaf;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1)
 }
 
 #search_mini_form .search-button {
@@ -100,8 +107,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border: 0;
     background: none;
 }

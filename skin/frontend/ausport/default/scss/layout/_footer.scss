@@ -246,3 +246,40 @@
         }
     }
 }
+@media (min-width: 768px) and (max-width: 1024px){
+    .top-menu li a {
+        font-size:10px;
+        padding-left: 5px;
+    }
+    .top-container {
+        float: right;
+        width: 79%;
+    }
+    .call-us {
+        clear: both;
+    }
+    .top-menu {
+        float: right;
+        padding: 0;
+    }
+    .logo {left: 20px;
+        background-image: url("../images/logo-mobile.png");
+        background-position: center center;
+        background-size: 100% auto;
+        left: 0;
+        width: 200px;
+    }
+}
+@media(max-width: 479px) {
+    #header-search .search {
+        display: none;
+    }
+    .call-us {
+        float: none;
+        margin: 10px auto;
+        width: 170px;
+    }
+    #search_mini_form .input-box {
+        width:100%;
+    }
+}
