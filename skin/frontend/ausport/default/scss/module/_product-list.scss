@@ -194,8 +194,8 @@ $productsGridActionHeight: 85px;
 @include bp(min-width, $bp-xsmall + 1) {
     /* Config: Three columns + flexible gutter */
     // Container: 600 - (2 * 30 trim wide) = 540
-    $column-count: 3;
-    $column-gutters: 2;
+    $column-count: 4;
+    $column-gutters: 0;
     $container: 600 - (2 * $trim);
 
     // Math: (540 - (2 * 30 gutter)) / 3 items = 160
@@ -207,13 +207,13 @@ $productsGridActionHeight: 85px;
             clear: none;
         }
         > li:nth-child(even) {
-            margin-right: percentage($product-column-spacing / $container);
+           // margin-right: percentage($product-column-spacing / $container);
         }
 
         /* Set three-column config */
         > li {
             width: percentage($column-width / $container);
-            margin-right: percentage($product-column-spacing / $container);
+            margin-right:0;// percentage($product-column-spacing / $container);
         }
         > li:nth-child(#{$column-count}n+1) {
             clear: left;

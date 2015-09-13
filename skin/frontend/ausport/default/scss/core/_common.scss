@@ -22,13 +22,86 @@
 // @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
 // @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 //
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
+//@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
 @charset "UTF-8";
 
 /* ============================================ *
  * Base Styles
  * ============================================ */
+// Gradients
 
+
+
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
+  background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+}
+@mixin gradient-horizontal-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: -webkit-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
+}
+@mixin gradient-vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-image: -o-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
+@mixin gradient-radial($inner-color: #555, $outer-color: #333) {
+  background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
+  background-image: radial-gradient(circle, $inner-color, $outer-color);
+  background-repeat: no-repeat;
+}
+@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 45deg) {
+  background-image: -webkit-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+}
+@mixin icon-() {
+    display: inline-block;
+    width: 40px;height: 40px;
+    vertical-align: middle;   
+    margin-right: 5px; 
+    color: transparent;
+}
+@mixin heading($style: italic) {
+	font-size: 15px;
+	font-style:$style ;
+	padding: 8px 16px;
+	color:#fff;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	border-bottom: 4px solid #fcda20;
+	@include gradient-vertical-three-colors(#2e563d,#264d35,50%,#1f452e);
+}
 @-ms-viewport {
     width: device-width;
 }
@@ -1669,32 +1742,33 @@ $toolbar-icon-padding-offset: 8px;
 
 .pages li {
     float: left;
-}
-
-.pages a,
-.pages .current {
-    display: inline-block;
-    border: 0;
-    font-size: $f-size-s;
+	display: block;
+    font-size: 11px;
     text-align: center;
     text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
-    line-height: 30px;
+    line-height: 25px;
     width: 25px;
-    height: 30px;
+    height: 25px;
     padding: 0;
-    color: $c-action;
-    font-family: $f-stack-sans;
+	border-radius:2px;
+    color: $c-text;   margin: 0 2px;
+    font-family: $f-stack-sans;text-shadow: 0 1px 2px 3px rgba(0,0,0,0.3);
+	border: 1px solid #cfcfcf;
+	@include gradient-vertical-three-colors(#fafafa,#f2f2f2,50%,#eaeaea);
+}
+
+.pages a,
+.pages .current {
+    
 }
 
 .pages .current,
 .pages .current:hover {
-    color: $c-text;
-    border: 1px solid $c-module-border;
-    width: 30px;
-    background-color: #FFFFFF;
-    cursor: default;
+    color: $c-yellow;
+	@include gradient-vertical-three-colors(#38724f,#225837,50%,#1c482d);
+    cursor: default;	border: 1px solid #1c482d;
 }
 
 .pages .next,
@@ -1714,7 +1788,7 @@ $toolbar-icon-padding-offset: 8px;
 .pages .next {
     &:before {
         @include triangle(right, 4px, $c-action);
-        top: 50%;
+        top: -5px;
         margin-top: -3px;
         left: 50%;
         margin-left: -2px;
@@ -1727,7 +1801,7 @@ $toolbar-icon-padding-offset: 8px;
 .pages .previous {
     &:before {
         @include triangle(left, 4px, $c-action);
-        top: 50%;
+        top: -5px;
         margin-top: -3px;
         left: 50%;
         margin-left: -2px;
@@ -1909,80 +1983,7 @@ body.customer-account .data-table {
     max-height: 50px;
     width: auto;
 }
-// Gradients
 
-
-
-// Horizontal gradient, from left to right
-//
-// Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9 and below.
-@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
-  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
-  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
-  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
-}
-
-// Vertical gradient, from top to bottom
-//
-// Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9 and below.
-@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
-  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
-  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
-  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
-}
-
-@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
-  background-repeat: repeat-x;
-  background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
-  background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
-  background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-}
-@mixin gradient-horizontal-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
-  background-image: -webkit-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
-  background-image: -o-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
-  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
-  background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
-}
-@mixin gradient-vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
-  background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
-  background-image: -o-linear-gradient($start-color, $mid-color $color-stop, $end-color);
-  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
-  background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
-}
-@mixin gradient-radial($inner-color: #555, $outer-color: #333) {
-  background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
-  background-image: radial-gradient(circle, $inner-color, $outer-color);
-  background-repeat: no-repeat;
-}
-@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 45deg) {
-  background-image: -webkit-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
-  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
-}
-@mixin icon-() {
-    display: inline-block;
-    width: 40px;height: 40px;
-    vertical-align: middle;   
-    margin-right: 5px; 
-    color: transparent;
-}
-@mixin heading($style: italic) {
-	font-size: 15px;
-	font-style:$style ;
-	padding: 8px 16px;
-	color:#fff;
-	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-	border-bottom: 4px solid #fcda20;
-	@include gradient-vertical-three-colors(#2e563d,#264d35,50%,#1f452e);
-}
 
 .blockHeader { 
 	@include heading();
@@ -2124,4 +2125,13 @@ body {
 		background: url(../images/bg-title.png) no-repeat center center;
 		text-align: center;
 	}
+}
+.copyright   {
+	color: $c-text;
+	.author {		
+		text-transform: none;
+		a {text-transform: uppercase;}
+	}
+}.special-box {
+    margin-top: 20px;
 }

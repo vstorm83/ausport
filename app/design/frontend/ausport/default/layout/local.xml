@@ -78,7 +78,7 @@
 			<remove name="footer_links2" />
 			<remove name="cms_footer_links"/>
 			
-			<block type="cms/block" name="tool_training">
+			<!--block type="cms/block" name="tool_training">
 				<action method="setBlockId">
 					<block_id>tool_training</block_id>
 				</action>
@@ -97,7 +97,7 @@
 				<action method="setBlockId">
 					<block_id>gift_certificates</block_id>
 				</action>
-			</block>
+			</block-->
 			
 			<block type="cms/block" name="fLinks1">
 				<action method="setBlockId">

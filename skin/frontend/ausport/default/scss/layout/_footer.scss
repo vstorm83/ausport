@@ -57,7 +57,7 @@
 
     .block-title,
     address {
-        color: $c-text-primary;
+        //color: $c-text-primary;
     }
 
     .links {
@@ -188,7 +188,7 @@
         display: none;
     }
 
-    address {
+    .copyright  {
         background: url(../images/bg-title-gray.png) no-repeat center top;
         text-align: center;
         width: 100%;
@@ -277,7 +277,134 @@
 			}
 	}
 }
+.footer  .footer-top {
+	background: rgba(0, 0, 0, 0) url("../images/bg-title-gray.png") no-repeat scroll center bottom;
+    padding: 30px 0 80px 0;
+	@extend .clearfix;
+	margin-bottom: 40px!important;
+}
+	.footer.container {
+		& > div {
+			//margin: 0 -30px;
+
+		}
+		.footerBlock {
+			float: left;
+			width: 24%;    
+			position: relative;
+			& + .footerBlock {
+				margin-left: 12px;
+			}
+			img {
+				left: 0;
+				max-width: 100%;
+				position: absolute;
+				top: 0;
+			}
+			h2 {color: white;
+				font-size: 15px;
+				font-style: italic;
+				font-weight: 600;
+				margin: 10px 0 0;}
+			h1 {
+			@include heading();
+			color: white;font-size: 18px;font-weight: 600;font-style: italic;
+			margin: 0 0 0 0;
+			border-bottom: 1px solid #ededed;
+							}
+			a:hover {text-decoration: none;}
+			h1 a {color: white;}
+			.footerBlockContent {text-shadow: 0 1px 2px rgba(0,0,0,0.3)}
+			.footerBlockContainer {
+				position: relative;
+				color: white;
+				font-size: 15px;
+				font-weight: 700;	
+				span ,ul{
+					display: block;
+					min-height: 96px;				
+				}
+				span {padding-left: 5px;width: 68%;}
+				ul li {
+				 font-size: 13px;
+				line-height: 16px;  
+				margin-left: 15px;
+				position: relative;
+				&:after { 
+											
+					content: "*";
+					display: block;
+					left: -10px;
+					position: absolute;
+					top: 4px;}
+				}
+				.footerBlockContent {
+					padding: 5px 10px;
+					
+				}
+			}
+		}
+	}
+.adv,.newletter-feedback {display: none}
+@include bp(min-width, $bp-medium + 1) {
+	.newletter-feedback a {
+		display: block;
+		width: 100%;font-size: 0;
+		margin: 5px 0;
+	}
+	.newletter-feedback {
+				display:block;
+				top: 146px;right: 1px;
+	}
+	.footer.container {
+		& > div {
+			margin: 0px -30px;
+
+		}
+	}
+	.category-head {
+		& > h2 {float: left;}
+	}
+	
+	.main {position:relative;}
+	.adv {
+		position: absolute;
+		left: -130px;
+		display: block;
+		top: -54px;
+		width:125px;
+		img {max-width: 100%;}
+		&.adv-right {
+					left: auto;
+					right: -130px;
+		}
+	}
+}
+
+
+
+
+@include bp(max-width, $bp-medium + 1) {
+	
+	input[type="email"], input[type="search"], input[type="number"], input[type="password"], input[type="tel"], input[type="text"]{
+			width: 100%;	
+	}
+	
+	
+}
+@media(max-width: 1100px) {
+		.adv,.newletter-feedback {display:none;}
+}
+@media (min-width: 768px) and (max-width: 1100px){
+.footer .links {width: 20%;}	
+.footer.container .footerBlock h2 {font-size: 12px;}
+.footer.container .footerBlock .footerBlockContainer {font-size:11px;}
+}
+
 @media (min-width: 768px) and (max-width: 1024px){
+	.footer.container > div {
+    margin: 0 0px;
+}
     .top-menu li a {
         font-size:10px;
         padding-left: 5px;
@@ -301,6 +428,40 @@
         width: 200px;
     }
 }
+@media (max-width: 980px){
+	.footer.container .footerBlock {
+		float: left;
+		margin: 10px;
+		position: relative;
+		width: 45%;min-height: 350px!important;
+	span ,ul{}
+		img{width: 100%}
+	}
+	.col-right.sidebar > p > img {
+	   margin: 0 auto;
+	}
+}
+@media (max-width: 800px){
+.footer.container .footerBlock {min-height: 250px!important;}
+}
+@media(max-width: 600px) {
+	.footer.container .footerBlock {
+		width: 44%;
+		min-height: 190px !important;
+	
+	}
+	.footer.container .footerBlock .footerBlockContainer {
+	* {font-size: 12px;}		
+	}
+	.copyright {
+				> div {float: none;text-align:center;margin: 5px 0;}
+	}
+	.footer .links {
+    margin-right: 0;
+		width: 100%;
+		float: none;text-align: center;
+	}
+}
 @media(max-width: 479px) {
     #header-search .search {
         display: none;
@@ -313,4 +474,10 @@
     #search_mini_form .input-box {
         width:100%;
     }
+	.footer.container .footerBlock {
+		float: none;
+		margin: 20px auto!important;
+		width: 320px;
+	
+	}
 }
