@@ -5,7 +5,7 @@
 			<remove name="breadcrumbs"/>
 		</reference>
 		<reference name="top.menu">
-			<block type="cms/block" name="top_menu" before="-">
+			<!--block type="cms/block" name="top_menu" before="-">
 				<action method="setBlockId">
 					<block_id>top_menu</block_id>
 				</action>
@@ -14,7 +14,7 @@
 				<action method="setBlockId">
 					<block_id>call_us</block_id>
 				</action>
-			</block>
+			</block!-->
 			<block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" after="call_us">
              <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
                  <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
@@ -35,6 +35,9 @@
 			<remove name="paypal.partner.right.logo"/>
 			<remove name="catalog.compare.sidebar"/>
 			<remove name="right.poll"/>	
+			<remove name="right.reports.product.viewed"/>
+			<remove name="right.reports.product.compared"/>
+			<remove name="left.reports.product.viewed"/>
 			<block type="cms/block" name="mobile_showroom">
 				<action method="setBlockId">
 					<block_id>mobile_showroom</block_id>
@@ -120,13 +123,17 @@
 	</default>
 	
 	<cms_index_index>
-		<reference name="featuredContainer">		      
+		<reference name="featuredContainer">
+		    <block type="catalog/product_new" name="home.catalog.product.new" template="catalog/product/new.phtml">
+            <block type="page/html_pager" name="new_products_pager">
+            	<action method="setLimit"><value>4</value></action>
+            </block>
+         </block>    		      
             <block type="core/template" name="category.products" template="inchoo/featuredproducts/view.phtml">
                 <block type="featuredproducts/product_list" name="featured_product_list" as="featured_product_list" template="inchoo/featuredproducts/list.phtml">
-                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
-                            <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    <block type="page/html_pager" name="featured_products_pager">
+                    	<action method="setLimit"><value>4</value></action>
                     </block>
-                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
                 </block>
             </block>            
       </reference>

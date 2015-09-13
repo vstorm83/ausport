@@ -86,7 +86,6 @@
 
     #header-nav {
         display: block; /* Force visibility */
-        border-bottom: 1px solid $c-module-border-light;
     }
 
 }
@@ -107,7 +106,7 @@
  * General Navigation Styles
  * ============================================ */
 
-$nav-primary-height: 30px;
+$nav-primary-height: 50px;
 
 .nav-primary {
     a {
@@ -122,10 +121,12 @@ $nav-primary-height: 30px;
     li {
         position: relative;
     }
-
-    li.level1 a {
-        border-bottom: 1px solid $c-module-border;
-    }
+	li.level1 a {
+		line-height: 24px;
+		padding: 5px ;
+		text-transform: uppercase;
+	}
+ 
 }
 
 // Show sub-menus when JS adds the appropriate classes
@@ -196,16 +197,48 @@ $nav-primary-height: 30px;
  * ============================================ */
 
 @include bp(min-width, $bp-medium + 1) {
-
-    .nav-primary {
-
-        a.level0 {
-            padding: 0 25px;
+	#header-nav .container {
+		box-shadow:1px 1px 6px rgba(0, 0, 0, 0.5);
+		@include gradient-vertical-three-colors(#2e573e,#254c34,50%,#1d442c);
+		 .skip-cart   { 
+           display: none;
         }
-
+		
+	}
+	#header-nav .container #nav {
+		margin: 0 -30px;
+	} 
+    .nav-primary {
+		   li.level1 a {
+				color: white;
+				line-height: 20px;
+				padding: ($box-spacing - 5 ) ($box-spacing + 10);
+				background: url(../images/item.png) no-repeat 10px 11px;
+				&:hover {
+					color: $c-link;
+					background: #fce420 url(../images/hover-item.png) no-repeat 10px 11px;
+				}
+			}
+        a.level0 {
+            padding: 0px 10px;
+        }
+		li.level0 {
+			background: url(../images/seperater.png) no-repeat left center;
+			&.first {			
+				background: none;
+			}
+		}
         li.level0,
         a.level0 {
             display: inline-block;
+			font-size: 12px;
+			color: white;
+			font-weight: 600;
+			
+			text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			&:hover {
+			@include gradient-vertical-three-colors(#fce420,#fcc220,50%,#fcb120);
+			color:$c-link}
         }
 
         li:last-child > a {
@@ -229,9 +262,8 @@ $nav-primary-height: 30px;
             top: $nav-primary-height; /* Height of ".nav-primary a.level0" */
             z-index: 10;
             width: 250px;
-            padding-left: $box-spacing;
-            padding-right: $box-spacing;
             display: none; /* Hide until displayed. */
+			@include gradient-vertical-three-colors(#2e563d,#264e35,50%,#1e452d);
         }
 
         /* Level 2+ */

@@ -40,9 +40,13 @@
             </db>
             <default_setup>
                 <connection>
-                    <host><![CDATA[localhost]]></host>
+                    <host><![CDATA[127.0.0.1]]></host>
                     <username><![CDATA[root]]></username>
+<<<<<<< HEAD
                     <password><![CDATA[root]]></password>
+=======
+                    <password><![CDATA[]]></password>
+>>>>>>> e16359598f17b01a45668f5b40024340a1820407
                     <dbname><![CDATA[ausport]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>

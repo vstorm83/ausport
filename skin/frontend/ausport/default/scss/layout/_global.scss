@@ -42,3 +42,11 @@ body {
 .wrapper:after {
     @include clearfix;
 }
+
+.page {
+	background:#ededed url(../images/bg-body.jpg) no-repeat left 0px;
+}
+.main  {
+	background: white;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3)
+}

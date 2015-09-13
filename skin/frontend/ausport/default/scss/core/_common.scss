@@ -22,7 +22,7 @@
 // @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
 // @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 //
-
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
 @charset "UTF-8";
 
 /* ============================================ *
@@ -724,8 +724,7 @@ a.button:hover {
  * Container
  */
 
-.main-container,
-.footer-container {
+.container {
     position: relative;
     max-width: $max-container-width;
     margin: 0 auto;
@@ -738,8 +737,7 @@ a.button:hover {
 
 @include bp(min-width, 480px) {
 
-    .main-container,
-    .footer-container {
+    .container {
         padding: $trim;
     }
 }
@@ -947,9 +945,8 @@ a.button:hover {
  */
 @include bp(min-width, $bp-medium + 1) {
     .top-container {
-        max-width: $max-container-width;
-        margin: 0 auto;
-        padding: 0 $trim;
+       width: 70%;
+        float: right;
     }
 }
 
@@ -1525,11 +1522,8 @@ span.weee {
 .toolbar {
     margin-top: $box-spacing;
     margin-bottom: 15px;
-    border-bottom: 1px solid $c-module-border;
-    border-top: 1px solid $c-module-border;
-    background: $c-module-background;
     padding: 5px 10px 0px 10px;
-
+	.sorter {display: none;}
     &:after {
         @include clearfix;
     }
@@ -1644,7 +1638,6 @@ $toolbar-icon-padding-offset: 8px;
 
     .limiter {
         float: left;
-        height: 30px;
         line-height: 30px;
 
         & > label {
@@ -1915,4 +1908,220 @@ body.customer-account .data-table {
     float: none;
     max-height: 50px;
     width: auto;
+}
+// Gradients
+
+
+
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+  background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);  // Opera 12
+  background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down
+}
+
+@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
+  background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
+  background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+}
+@mixin gradient-horizontal-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: -webkit-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down, gets no color-stop at all for proper fallback
+}
+@mixin gradient-vertical-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
+  background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-image: -o-linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+}
+@mixin gradient-radial($inner-color: #555, $outer-color: #333) {
+  background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
+  background-image: radial-gradient(circle, $inner-color, $outer-color);
+  background-repeat: no-repeat;
+}
+@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 45deg) {
+  background-image: -webkit-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+}
+@mixin icon-() {
+    display: inline-block;
+    width: 40px;height: 40px;
+    vertical-align: middle;   
+    margin-right: 5px; 
+    color: transparent;
+}
+@mixin heading($style: italic) {
+	font-size: 15px;
+	font-style:$style ;
+	padding: 8px 16px;
+	color:#fff;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	border-bottom: 4px solid #fcda20;
+	@include gradient-vertical-three-colors(#2e563d,#264d35,50%,#1f452e);
+}
+
+.blockHeader { 
+	@include heading();
+}
+.blockConent {
+	padding: 16px;
+	margin-bottom: 15px;
+	iframe,image,video {
+		max-width: 100%;
+	}
+	.data-content {
+		color:$c-action;
+		font-weight: bold; 
+	}
+	.desc {
+	font-weight: bold;color:$c-action;
+	}
+	img {display: inline;    vertical-align: middle}
+	&.support-box {a {white-space:nowrap}}
+	.date {color:#717171;font-weight: normal;}
+	.author {text-align: right;margin: 5px 0}
+}
+.follow-box {
+	img {display: inline;    max-width: 32%;}
+	br {display: none}
+}
+@mixin button-style() {
+	@include gradient-vertical(#1c482e,#1e4e31);
+	color:$c-yellow;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+	font-size:14px;
+	text-align: center;
+	border: none;
+	padding: 5px;
+	
+	box-shadow:1px 4px 7px rgba(0,0,0,0.3)inset ,1px 2px 3px rgba(0,0,0,0.3) ;
+	border-radius: 3px;
+}
+.button {
+	@include button-style;
+}
+.pull-right {float: right}
+.pull-left {float: left}
+hr {
+	border: none;
+	height:1px;background:#ccc;
+	margin: 15px 0;
+}
+.blockConent  button {
+	@extend .button;
+	margin:  10px 0;
+}
+.group-control {
+  margin: 10px 0;
+	label {color:$c-text;font-size: 12px;font-weight: normal}
+}
+
+.sidebar {
+		background:#eaeaea;
+		padding:0;
+}
+
+.subtitle,body.cms-index-index h2.subtitle,h2 {
+		font-size: 30px;
+		font-weight: bold;
+		color:$c-action;
+		font-style: italic;
+		border: none;
+		text-align: left;
+}
+.cms-index-index {
+		.col-main {
+					padding: 0 20px;
+			.homeBanner {margin: 0 -10px;}
+		}
+}
+.std ul {padding: 0;list-style: none}
+.homeText {
+	padding-bottom: 80px;
+	margin-bottom :30px;
+	background: url(../images/bg-title.png) no-repeat center bottom;
+	text-align: center;
+	h1 {font-size: 30px;font-style: italic;color:$c-yellow; font-weight: bold;   text-transform: capitalize;margin:0}
+	h2 {margin: 0 0 30px 0;text-transform: capitalize;text-align: center;}
+	
+}
+
+@mixin dots(){
+	width: 14px;
+	height: 14px;border:1px solid #cacfd1;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 51%, rgba(246,41,12,1) 51%, rgba(228,233,237,1) 51%, rgba(228,233,237,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(51%, rgba(255,255,255,1)), color-stop(51%, rgba(246,41,12,1)), color-stop(51%, rgba(228,233,237,1)), color-stop(100%, rgba(228,233,237,1)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 51%, rgba(246,41,12,1) 51%, rgba(228,233,237,1) 51%, rgba(228,233,237,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 51%, rgba(246,41,12,1) 51%, rgba(228,233,237,1) 51%, rgba(228,233,237,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 51%, rgba(246,41,12,1) 51%, rgba(228,233,237,1) 51%, rgba(228,233,237,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 51%, rgba(246,41,12,1) 51%, rgba(228,233,237,1) 51%, rgba(228,233,237,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e4e9ed', GradientType=0 );	
+} 
+
+body {
+	.magestore-bannerslider-title {display: none}
+	.flexslider {
+		background: #fff none repeat scroll 0 0;
+		border: medium none;
+		border-radius: 4px;
+		box-shadow: none;
+		margin: 0 0 60px;
+		max-width: 100%;
+		position: relative;
+		ul li {margin: 0!important}
+	}	
+	.flex-control-nav li {
+		display: inline-block;
+		margin: 0 2px !important;
+	}
+	.flex-control-paging li a {
+			@include dots();
+			
+			&.flex-active,&:hover {
+					position:relative;	
+					@include dots();
+					&:after, {
+						background:#232425;
+						 border-radius: 50%;
+						content: "";
+						display: block;
+						height: 10px;
+						left: 1px;
+						position: absolute;
+						top: 1px;
+						width: 10px;
+				}
+			}
+			
+	}
+	.flex-control-nav {
+		background: url(../images/bg-title.png) no-repeat center center;
+		text-align: center;
+	}
 }
