@@ -264,6 +264,7 @@ $nav-primary-height: 50px;
             width: 250px;
             display: none; /* Hide until displayed. */
 			@include gradient-vertical-three-colors(#2e563d,#264e35,50%,#1e452d);
+			border: none!important;
         }
 
         /* Level 2+ */

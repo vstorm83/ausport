@@ -27,6 +27,9 @@
 <div class="footer-container">
     <div class="footer container">
         <?php echo $this->getChildHtml() ?>
-        <address class="copyright"><?php echo $this->getCopyright() ?></address>
+        <address class="copyright clearfix">
+			<div class="pull-left"><?php echo $this->getCopyright() ?></div>
+			<div class="pull-right author">WEBSITE DESIGN BY <a href="">EARTHLINK DESIGN</a></div>
+		</address>
     </div>
 </div>
