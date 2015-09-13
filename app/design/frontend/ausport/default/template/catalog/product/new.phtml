@@ -35,8 +35,10 @@ $_products->clear();
 $_products->load();
 ?>
 <div class="newProduct">
-<div>NEW ARRIVAL</div>
+	<div class="clearfix">
+<h2 class="pull-left heading">NEW ARRIVAL</h2>
 <?php echo $this->getChildHtml('new_products_pager') ?>
+	</div>
 <div class="new-lastest">
 <?php $_columnCount = $this->getColumnCount(); ?>
     <?php $i=0; foreach ($_products->getItems() as $_product): ?>
@@ -67,6 +69,12 @@ $_products->load();
 					 <?php else:?>
 					    <span class="new-price">AUD <?php echo $_coreHelper->formatPrice($_price);?></span>
 					 <?php endif; ?>
+					<a href="<?php echo $_product->getProductUrl() ?>" class="more">More Info</a>
+					<div class="actionCart">
+						<button class="button btn-cart" title="Add to Cart" type="button"><span><span>Add to Cart</span></span></button>
+					
+					</div>
+					
             </li>
         <?php if ($i%$_columnCount==0 || $i==count($_products)): ?>
         </ul>

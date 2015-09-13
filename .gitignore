@@ -5,3 +5,4 @@
 /app/etc/
   
 /media/wysiwyg/.thumbs/
+/skin/frontend/ausport/default/scss/.sass-cache/

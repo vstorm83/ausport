@@ -171,7 +171,6 @@
 // ---------------------------------------------
 .top-container {
     position: relative;
-    z-index: 2;
 }
 @include bp(min-width, $bp-medium + 1) {
 
@@ -227,13 +226,14 @@
 	}
 }
 body #search_mini_form .search-button:before {
-     height: 18px;
+     height: 16px;
     left: auto;
     right: 5px;
-    top: 19px;
-    width: 14px;
-    background: url(../images/search-input.png);
+    top: 22px;
+    width: 14px;box-shadow:0 0 0 transparent;
+    background: transparent url(../images/search-input.png);
 }
+body .search-button {box-shadow:0 0 0 transparent;}
 #header-search {
   .search{
         @include icon-();
@@ -437,7 +437,7 @@ a.skip-link {
 .account-cart-wrapper {
     left: 52%;
     position: absolute;
-    top: 53px;
+    top: 53px;z-index: 9;
     @include bp(max-width, $bp-medium) {
         position: static;
     }

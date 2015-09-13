@@ -48,7 +48,13 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col2-right-layout">
+			
             <div class="main container">
+				<div class="adv adv-left">
+				 <?php 
+				echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner-left')->toHtml();
+				?>
+			</div>
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <div class="col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
@@ -56,7 +62,13 @@
                     <?php echo $this->getChildHtml('featuredContainer') ?>                    
                 </div>
                 <div class="col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
+				<div class="adv adv-right">
+				 <?php 
+				echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner-right')->toHtml();
+				?>
+			</div>
             </div>
+			
         </div>
         <?php echo $this->getChildHtml('footer_before') ?>
         <?php echo $this->getChildHtml('footer') ?>

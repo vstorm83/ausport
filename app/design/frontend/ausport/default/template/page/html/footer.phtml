@@ -24,9 +24,33 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
 <div class="footer-container">
     <div class="footer container">
-        <?php echo $this->getChildHtml() ?>
-        <address class="copyright"><?php echo $this->getCopyright() ?></address>
+		<div class="footer-top clearfix">
+			 <?php 
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('tool_training')->toHtml();
+              ?>
+			<?php 
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('indoor_training')->toHtml();
+              ?>
+			<?php 
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('bottom_mobile_showroom')->toHtml();
+              ?>
+			<?php 
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('gift_certificates')->toHtml();
+              ?>
+		</div>
+		<div class="footer-bottom clearfix">			
+			<?php echo $this->getChildHtml() ?>
+		</div>
+        <div class="copyright clearfix">
+			<div class="pull-left"><?php echo $this->getCopyright() ?></div>
+			<div class="pull-right author">WEBSITE DESIGN BY <a href="">EARTHLINK DESIGN</a></div>
+		</div>
     </div>
 </div>
+
+ <?php 
+   echo $this->getLayout()->createBlock('cms/block')->setBlockId('newletter_feedback')->toHtml();
+?>
