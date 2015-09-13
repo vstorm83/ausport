@@ -22,7 +22,7 @@
 // @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
 // @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 //
-//@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
 @charset "UTF-8";
 
 /* ============================================ *
@@ -97,6 +97,7 @@
 	font-size: 15px;
 	font-style:$style ;
 	padding: 8px 16px;
+	font-weight: 700;
 	color:#fff;
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 	border-bottom: 4px solid #fcda20;
