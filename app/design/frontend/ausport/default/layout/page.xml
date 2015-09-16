@@ -47,6 +47,7 @@
                 <action method="addJs"><script>scriptaculous/slider.js</script></action>
                 <action method="addJs"><script>varien/js.js</script></action>
                 <action method="addJs"><script>varien/form.js</script></action>
+                <action method="addJs"><script>varien/menu.js</script></action>
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>mage/cookies.js</script></action>
 
@@ -110,6 +111,10 @@
             <block type="core/text_list" name="left_first" as="left_first" translate="label">
                 <label>Left Column First (shows above main column on smaller screens)</label>
             </block>
+            
+            <block type="core/text_list" name="beforeContent" as="beforeContent" translate="label">
+                <label>Before Content</label>
+            </block>
 
             <block type="core/text_list" name="left" as="left" translate="label">
                 <label>Left Column</label>
@@ -117,7 +122,7 @@
 
             <block type="core/messages" name="global_messages" as="global_messages"/>
             <block type="core/messages" name="messages" as="messages"/>
-
+				
             <block type="core/text_list" name="content" as="content" translate="label">
                 <label>Main Content Area</label>
             </block>
@@ -127,6 +132,10 @@
 
             <block type="core/text_list" name="right" as="right" translate="label">
                 <label>Right Column</label>
+            </block>
+            
+            <block type="core/text_list" name="afterContent" as="afterContent" translate="label">
+                <label>After Content</label>
             </block>
 
             <block type="page/html_wrapper" name="footer.before" as="footer_before" translate="label">

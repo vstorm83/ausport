@@ -48,7 +48,8 @@
     <div class="page">
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col2-left-layout">
-            <div class="main">
+            <div class="main container">
+            	 <?php echo $this->getChildHtml('beforeContent') ?>
                 <?php echo $this->getChildHtml('breadcrumbs') ?>
                 <?php // This left_first block will display above the main content on smaller viewports ?>
                 <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
@@ -59,6 +60,7 @@
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
                 <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+            	 <?php echo $this->getChildHtml('afterContent') ?>
             </div>
         </div>
         <?php echo $this->getChildHtml('footer_before') ?>

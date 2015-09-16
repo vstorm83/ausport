@@ -3,6 +3,7 @@
 	<default>
 		<reference name="root">
 			<remove name="breadcrumbs"/>
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
 		<reference name="top.menu">
 			<!--block type="cms/block" name="top_menu" before="-">
@@ -67,7 +68,41 @@
 				<action method="setBlockId">
 					<block_id>ausport_videos</block_id>
 				</action>
-			</block>		
+			</block>					
+		</reference>
+		
+		<reference name="beforeContent">			
+			<block type="cms/block" name="banner-left">
+				<action method="setBlockId">
+					<block_id>banner-left</block_id>
+				</action>
+			</block>
+		</reference>
+		
+		<reference name="afterContent">	
+			<block type="cms/block" name="banner-right">
+				<action method="setBlockId">
+					<block_id>banner-right</block_id>
+				</action>
+			</block>
+		</reference>
+		
+		<reference name="left">
+			<block type="cms/block" name="special_deal">
+				<action method="setBlockId">
+					<block_id>special_deal</block_id>
+				</action>
+			</block>
+			<block type="cms/block" name="customer_support">
+				<action method="setBlockId">
+					<block_id>customer_support</block_id>
+				</action>
+			</block>
+			<block type="cms/block" name="social">
+				<action method="setBlockId">
+					<block_id>social</block_id>
+				</action>
+			</block>
 		</reference>
 
 		<reference name="footer">
@@ -127,39 +162,34 @@
 		    <block type="catalog/product_new" name="home.catalog.product.new" template="catalog/product/new.phtml">
             <block type="page/html_pager" name="new_products_pager">
             	<action method="setLimit"><value>4</value></action>
-            </block>
+            </block>            
          </block>    		      
             <block type="core/template" name="category.products" template="inchoo/featuredproducts/view.phtml">
                 <block type="featuredproducts/product_list" name="featured_product_list" as="featured_product_list" template="inchoo/featuredproducts/list.phtml">
                     <block type="page/html_pager" name="featured_products_pager">
                     	<action method="setLimit"><value>4</value></action>
                     </block>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
                 </block>
-            </block>            
+            </block>
       </reference>
 	</cms_index_index>
 	
-		<!-- 
+
 	<catalog_product_view>
+		<!-- 
 		<remove name="product.info.sharing"/>
 		<remove name="product.reviews"/>
 		<remove name="product.info.addto"/>
 		<remove name="product.info.availability"/>
-		
+		 -->
+		<remove name="product.info.additional"/>
 		<reference name="catalog.product.related">
 			<action method="setTierPriceTemplate"><template></template></action>
-		</reference>		 
-		
-		<reference name="product.info">
-			<block type="cms/block" name="register_warranty">
-				<action method="setBlockId">
-					<block_id>product-detail-register-warranty</block_id>
-				</action>
-			</block>
-			<block type="manufacturer/manufacturer" name="product_manufacturer" template="manufacturer/product_manufacturer.phtml"/>
 		</reference>
+		
 		<reference name="root">
-			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>		  		
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>		  		
 		</reference>
 		<reference name="product.description">
 			<action method="setTitle" translate="value"><value>Features</value></action>
@@ -168,5 +198,4 @@
 			<action method="setTitle" translate="value"><value>Specifications</value></action>
 		</reference>
     </catalog_product_view>
-    -->
 </layout>
