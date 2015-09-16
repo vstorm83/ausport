@@ -63,18 +63,7 @@
 		
   		
         <?php if($this->canShowOptions()): ?>
-            <p class="block-subtitle">
-    			<span><?php echo $this->__('Shopping Options') ?></span>
-    			<?php if(count($this->getActiveFilters()) > 0):?>
-    				<?php if (Mage::helper('gomage_navigation')->isGomageNavigationClearAjax()): ?>
-
-    					<button class="button" onclick="GomageNavigation.setNavigationUrl('<?php echo urlencode($this->getClearUrl(true));?>'); return false;"><span><span><?php echo Mage::helper('gomage_navigation')->getClearAll(); ?></span></span></button>
-    				<?php else: ?>
-    					<button class="button" onclick="setLocation('<?php echo $this->getClearUrl();?>')"><span><span><?php echo Mage::helper('gomage_navigation')->getClearAll(); ?></span></span></button>
-    				<?php endif; ?>	
-    			
-    			<?php endif;?>
-    		</p>
+            
             <div id="narrow-by-list-<?php echo Mage::helper('gomage_navigation')->getSide($check); ?>" class="narrow-by-list filter-align-<?php echo Mage::getStoreConfig('gomage_navigation/general/content_filters'); ?>">
                 <?php $_filters = $this->getFilters() ?>
                 <?php $filter_width = $this->getFiltersCount($check);?>
@@ -162,7 +151,19 @@
 	                	<?php endif; ?>
 	           		<?php endif; ?>
                 <?php endforeach; ?>
-            </div>            
+            </div>   
+		<p class="block-subtitle">
+    			<span><?php echo $this->__('Shopping Options') ?></span>
+    			<?php if(count($this->getActiveFilters()) > 0):?>
+    				<?php if (Mage::helper('gomage_navigation')->isGomageNavigationClearAjax()): ?>
+
+    					<button class="button" onclick="GomageNavigation.setNavigationUrl('<?php echo urlencode($this->getClearUrl(true));?>'); return false;"><span><span><?php echo Mage::helper('gomage_navigation')->getClearAll(); ?></span></span></button>
+    				<?php else: ?>
+    					<button class="button" onclick="setLocation('<?php echo $this->getClearUrl();?>')"><span><span><?php echo Mage::helper('gomage_navigation')->getClearAll(); ?></span></span></button>
+    				<?php endif; ?>	
+    			
+    			<?php endif;?>
+    		</p>
         <?php endif; ?>
     </div>
 </div>

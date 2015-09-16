@@ -45,19 +45,20 @@
                 <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
                 <input type="hidden" name="related_product" id="related-products-field" value="" />
             </div>
-
-            <div class="product-img-box">
-                <div class="product-name">
+			  <div class="product-name">
                     <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 </div>
+            <div class="product-img-box">
+              
                 <?php echo $this->getChildHtml('media') ?>
             </div>
 
             <div class="product-shop">
-                <div class="product-name">
-                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
-                </div>
-
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
                 <div class="price-info">
                     <?php echo $this->getPriceHtml($_product); ?>
                     <?php echo $this->getChildHtml('bundle_prices') ?>
@@ -71,11 +72,7 @@
 
                 <?php echo $this->getChildHtml('alert_urls') ?>
 
-                <?php if ($_product->getShortDescription()):?>
-                    <div class="short-description">
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                    </div>
-                <?php endif;?>
+               
 
                 <?php echo $this->getChildHtml('other');?>
 
