@@ -2,7 +2,6 @@
 <layout version="0.1.0">
 	<default>
 		<reference name="root">
-			<remove name="breadcrumbs"/>
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
 		<reference name="top.menu">
@@ -158,6 +157,9 @@
 	</default>
 	
 	<cms_index_index>
+	   <reference name="root">
+			<remove name="breadcrumbs"/>
+		</reference>
 		<reference name="featuredContainer">
 		    <block type="catalog/product_new" name="home.catalog.product.new" template="catalog/product/new.phtml">
             <block type="page/html_pager" name="new_products_pager">
