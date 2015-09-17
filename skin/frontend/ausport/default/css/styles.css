@@ -2158,10 +2158,10 @@ body.customer-account .data-table .show-details .summary-collapse:hover:before {
 .a-right,
 .align-right {
   text-align: right; }
-
+/*
 .no-display {
   display: none !important; }
-
+*/
 .nobr,
 .nowrap {
   white-space: nowrap; }
@@ -2242,6 +2242,7 @@ body.customer-account .data-table .show-details .summary-collapse:hover:before {
   text-align: center;
   border: none;
   padding: 5px;
+  font-weight: bold;
   box-shadow: 1px 4px 7px rgba(0, 0, 0, 0.3) inset, 1px 2px 3px rgba(0, 0, 0, 0.3);
   border-radius: 3px; }
 
@@ -4105,7 +4106,7 @@ a.skip-link {
     display: block;
     font-size: 13px;
     font-weight: 700;
-    margin-top: 5px;
+    margin-top: 5px;z-index: 4;
     padding: 4px 0;
     position: absolute;left:0;
     text-align: center;
@@ -4559,7 +4560,7 @@ p.product-name {
   float: left;
   min-width: 50px; }
 .mini-products-list .product-details {
-  margin-left: 60px; }
+  margin-left: 70px; }
 .mini-products-list .product-details .product-name {
   padding-top: 10px; }
 .mini-products-list li {
@@ -4700,7 +4701,7 @@ p.product-name {
   margin-bottom: 10px;
   margin-top: 10px; }
   .block-layered-nav dl dd ol > li > span, .block-layered-nav dl dd ol > li > a {
-    padding: 5px 15px;
+    padding: 2px 15px;
     display: block; }
   .block-layered-nav dl dd ol > li > a .count {
     color: #A0A0A0; }
@@ -5090,8 +5091,8 @@ p.product-name {
         line-height: 1;
         text-align: center; }
   .product-view .add-to-cart-buttons .button, .product-view .add-to-cart-buttons .blockConent button, .blockConent .product-view .add-to-cart-buttons button {
-    min-height: 40px;
-    line-height: 40px;
+    min-height: 35px;
+    line-height: 35px;
     font-size: 16px;
     padding: 0px 30px;
     float: left;
@@ -5127,7 +5128,7 @@ p.product-name {
     height: 18px;
     left: 29%;
     position: absolute;
-    top: 14px;
+    top: 12px;
     width: 22px;
 }
 @media only screen and (max-width: 479px) {
@@ -8286,9 +8287,8 @@ div.paypal-logo {
   .header-minicart .block-cart {
     display: none; }
   .header-minicart .block-subtitle {
-    color: #50A4CF;
     font-family: "Roboto", sans-serif;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 1.4;
     padding: 5px;
@@ -8355,14 +8355,14 @@ div.paypal-logo {
       .header-minicart .info-wrapper .quantity-button.visible {
         opacity: 1; }
   .header-minicart .subtotal {
-    background-color: #DDDDDD;
+    background-color: #1e4e31 ;
     text-align: center;
     line-height: 2em; }
     .header-minicart .subtotal .label {
       color: white;
       text-transform: uppercase; }
     .header-minicart .subtotal .price {
-      color: #1e4e31; }
+      color: #fff; }
   .header-minicart .minicart-actions {
     padding: 10px;
     margin-top: 0px;
@@ -9368,7 +9368,7 @@ body .block-content {
 	margin-top: 0
 }
 .narrow-by-list dd ol.image-align-horizontally li a, .narrow-by-list dd ol.image-align-default li a, .narrow-by-list dd ol.image-align-2-columns li a, ul.image-align-horizontally li a, ul.image-align-default li a, ul.image-align-2-columns li a {
-	background-position: 0 6px!important;
+	background-position: 0 3px!important;
 	padding-right: 2px!important;color: #7c7c7c;font-size: 12px;
 	padding-left: 20px!important;
 }
@@ -9379,7 +9379,7 @@ body .image-align-default ,body .gan-list-checkbox ,body .gan-inblock-list,
 body .narrow-by-list dd ol.gan-inblock-list{
 	   background: #f8f8f8 none repeat scroll 0 0;
     border: 1px solid #ddd;
-    max-height: 93px;
+    max-height: 75px;
     overflow-y: auto;
 }
 #advancednavigation-filter-content-cat-left li {
@@ -9449,3 +9449,73 @@ body .block-layered-nav .narrow-by-list dt.active .filter-name:after {
     float: left;
 }
   }
+  
+  
+  
+  .jcarousel-wrapper {
+    margin: 20px auto;
+    position: relative;
+	background: #eaeaea;padding: 5px 45px;
+}
+
+/** Carousel **/
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+	
+    width: 100%;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    width: 85px;
+    float: left;
+	min-height: 85px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.jcarousel img {
+    display: block;
+    max-width: 100%;
+    height: auto !important;background: #fff none repeat scroll 0 0;
+    border: 4px solid #f4f4f4;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15), 1px 1px 1px white inset;
+    display: block;width: 100%;
+}
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #656565;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 60px/27px Arial, sans-serif;
+}
+.jcarousel-control-prev:hover,
+.jcarousel-control-next:hover {
+	text-decoration: none;
+}
+.jcarousel-control-prev {
+    left: 8px;
+}
+
+.jcarousel-control-next {
+    right: 8px;
+}

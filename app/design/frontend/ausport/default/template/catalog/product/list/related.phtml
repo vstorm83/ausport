@@ -65,6 +65,7 @@
                     <?php if($_product->getRatingSummary()): ?>
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
+					
 					<a class="more" href="<?php echo $_product->getProductUrl() ?>">More Info</a>
                     <div class="actions">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
