@@ -53,11 +53,10 @@
             <?php endif; ?>
         <?php $i++; endforeach; ?>
     </div>
-</div>
+</div><?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="jcarousel-wrapper">
 
-<?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views">
-    <h2><?php echo $this->__('More Views') ?></h2>
+<div class="more-views jcarousel">
     <ul class="product-image-thumbs">
     <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
         <?php if ($this->isGalleryImageVisible($_image)): ?>
@@ -70,7 +69,36 @@
         <?php endif; ?>
     <?php $i++; endforeach; ?>
     </ul>
+	  
 </div>
-<?php endif; ?>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+        var jcarousel = $('.jcarousel');
 
+        jcarousel
+            .on('jcarousel:reload jcarousel:create', function () {
+               
+            })
+            .jcarousel({
+                wrap: 'circular'
+            });
+
+        $('.jcarousel-control-prev')
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .jcarouselControl({
+                target: '+=1'
+            });
+    });
+})(jQuery);
+
+</script>
+
+<a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+<a href="#" class="jcarousel-control-next">&rsaquo;</a>
+</div><?php endif; ?>
 <?php echo $this->getChildHtml('after'); ?>
