@@ -51,6 +51,7 @@ $_minimalPriceValue = $_store->roundPrice($_store->convertPrice($_minimalPriceVa
 $_minimalPrice = $_taxHelper->getPrice($_product, $_minimalPriceValue, $_simplePricesTax);
 $_convertedFinalPrice = $_store->roundPrice($_store->convertPrice($_product->getFinalPrice()));
 $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStoreLabel();
+$currentCurrencyCode = Mage::app ()->getStore ()->getCurrentCurrencyCode();
 ?>
 
 <?php if (!$_product->isGrouped()): ?>
@@ -380,11 +381,20 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                 </p>
             <?php else: ?>
                 <p class="special-price">
-                    <span class="price-label"><?php echo $_specialPriceStoreLabel ?></span>
+                    <span class="price-label">Price (EA):</span>
                 <span class="price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
-                    <?php echo $_coreHelper->formatPrice($_finalPrice, false) ?>
+                    <?php                     
+                    echo $currentCurrencyCode.' '.$_coreHelper->formatPrice($_finalPrice, false) ?>
                 </span>
                 </p>
+                <?php                
+                $_save = $_price - $_finalPrice; ?>
+			       <p class="special-price yousave">
+						 <span class="label"><?php echo $this->__('You Save:') ?></span> <span
+									class="price">
+			          <?php echo $currentCurrencyCode.' '.$_coreHelper->formatPrice($_save, false, false); ?>
+			          </span>
+					  </p>
             <?php endif; ?>
         <?php endif; ?>
 
